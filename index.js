@@ -10,31 +10,26 @@ function setCart(c) {
 }
 
 function addToCart(item) {
- // write your code here
- var item = generateCartItem(item)
+  var item = generateCartItem(item)
   getCart().push(item)
   return `${item.itemName} has been added to your cart.`
 }
 
 function viewCart() {
-  // write your code here
   return getCart().length === 0 ? "Your shopping cart is empty." : generateCartDescription()
 }
 
 function total() {
-  // write your code here
   var sum = sumUpPrices()
   return sum
 }
 
-function removeFromCart(item) {
-  // write your code here
+function removeFromCart(itemName) {
   var itemToRemove = searchCartForItemToRemove(itemName)
   return itemToRemove ? removeItemFromCart(itemToRemove) : notifyUserThereIsNoItemToRemove()
 }
 
 function placeOrder(cardNumber) {
-  // write your code here
   if (arguments[0] == undefined) {
     return "Sorry, we don't have a credit card on file for you."
   } else {
@@ -44,7 +39,7 @@ function placeOrder(cardNumber) {
   }
 }
 
-// callback functions
+// helper functions
 function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -68,6 +63,7 @@ function generateCartDescription() {
     }
     cartDescription += `${middleCartItemsDescription}, and ${getCart()[getCart().length-1].itemName} at $${getCart()[getCart().length-1].itemPrice}`
   }
+
   return `${cartDescription}.`
 }
 
@@ -93,5 +89,7 @@ function notifyUserThereIsNoItemToRemove() {
 
 function removeItemFromCart(itemToRemove) {
   var indexOfItemToRemove = cart.indexOf(itemToRemove)
+  //Array.prototype.splice()
+  //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/splice
   getCart().splice(indexOfItemToRemove,1)
 }
