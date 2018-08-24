@@ -13,7 +13,7 @@ function addToCart(item) {
  // write your code here
  var item = generateCartItem(item)
   getCart().push(item)
-  return `${item.itemName} hsa been added to your cart.`
+  return `${item.itemName} has been added to your cart.`
 }
 
 function viewCart() {
